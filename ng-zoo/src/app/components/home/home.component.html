@@ -1,0 +1,18 @@
+<div class="col-lg-8 col-xs-offset-2" [@rotacion]>
+    <div class="jumbotron">
+        <h2>{{titulo}}</h2>
+        <p>{{descripcion}}</p>
+        <br>
+        <p>
+            <a class="boton-zoo btn btn-primary btn-lg" role="button" [routerLink]="['/animales']">
+                Ver Animales
+            </a>
+            <a class="boton-zoo btn btn-success btn-lg" role="button" [routerLink]="['/cuidadores']">
+                Ver Cuidadores
+            </a>
+            <a class="boton-zoo btn btn-warning btn-lg" role="button" [routerLink]="['/contacto']">
+                Contacta con nosotros
+            </a>
+        </p>
+    </div>
+</div>

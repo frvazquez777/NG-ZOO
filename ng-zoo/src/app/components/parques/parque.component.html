@@ -1,0 +1,18 @@
+<div class="col-lg-12" [@componentAnimation]>
+
+    <h2>{{titulo}}</h2>
+    <br>
+    <ol>
+        <li>Nombre: {{nombre}}</li>
+        <li>Metros: {{metros}}</li>
+        <li>Vegetación: {{vegetacion}}</li>
+        <li>
+            <span *ngIf="abierto">Abierto</span>
+            <span *ngIf="!abierto"> Cerrado</span>
+        </li>
+    </ol>
+
+    <br>
+    <button (click)="emitirEvento()">Mostrar en el Componente Padre</button>
+    <br>
+</div>

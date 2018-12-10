@@ -1,0 +1,72 @@
+<div class="col-lg-12" [@componentAnimation]>
+
+    <h1>{{titulo}}</h1>
+
+    <a class="boton_activo btn btn-success" [@marcar]="status" (click)="cambiarEstado(status)">
+        <span *ngIf="status == 'inactive'">Boton Inactivo</span>
+        <span *ngIf="status == 'active'">Boton Activo</span>
+    </a>
+
+    <hr>
+    <h4>Animaciones CSS3</h4>
+    <a class="boton_transicion">Transiciones</a>
+    <div class="clearfix"></div>
+
+    <div class="caja_animada">
+
+    </div>
+
+    <hr>
+    <p>Componente Padre </p>
+    <br>
+    <p>Iniciando Pruebas</p>
+    <h4>Utilizar JQuery</h4>
+
+    <button id="botonjq">Mostrat texto</button>
+    <br>
+    <p id="textojq" class="alert alert-warning">
+        Testing plays a large part in complex applications and a simpler testing strategy is useful when validating
+        that
+        your forms function correctly. Reactive forms and template-driven forms have different levels of reliance on
+        rendering the UI to perform assertions based on form control and form field changes. The following examples
+        demonstrate the process of testing forms with reactive and template-driven forms.
+    </p>
+
+    <div id="caja" style="width: 150px; height: 150px; border: 1px solid black;">
+        <p>
+            Reactive forms are more robust: they're more scalable, reusable, and testable. If forms are a key part of
+            your
+            application, or you're already using reactive patterns for building your application, use reactive forms.
+            Template-driven forms are useful for adding a simple form to an app, such as an email list signup form.
+            They're
+            easy to add to an app, but they don't scale as well as reactive forms. If you have very basic form
+            requirements
+            and logic that can be managed solely in the template, use template-driven forms.
+        </p>
+    </div>
+    <br>
+    <ul>
+        <li>Turno 1</li>
+        <li>Turno 2</li>
+    </ul>
+
+    <hr />
+    <p>Componente Hijo</p>
+
+    <input type="text" [(ngModel)]="nombreDelParque" (keyup)="mostrarParque()" />
+    <p>Resultado : {{nombreDelParque}}</p>
+    <br>
+    <div *ngIf="miParque">
+        <h4>Datos en el padre componente desde el hijo componente</h4>
+        <ol>
+            <li>{{miParque.nombre}}</li>
+            <li>{{miParque.metros}}</li>
+            <li>{{miParque.vegetacion}}</li>
+            <li>{{miParque.abierto}}</li>
+        </ol>
+    </div>
+    <br>
+    <div *ngIf="nombreDelParque">
+        <parque [nombre]="nombreDelParque" [metros_cuadrados]="777" (pasameLosDatos)="verDatosParque($event)"></parque>
+    </div>
+</div>
