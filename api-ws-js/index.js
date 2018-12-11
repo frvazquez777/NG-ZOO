@@ -1,12 +1,13 @@
 'use strict'
 
-var mongoose = require('moongoose');
+var mongoose = require('mongoose');
 
 var app = require('./app');
 var port = process.env.port || 3789;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/zoo')
+
+mongoose.connect('mongodb://localhost:27017/zoo', { useNewUrlParser: true })
     .then(() => {
         console.log('La conexion de base de datos se ha realizado...');
 
@@ -18,3 +19,4 @@ mongoose.connect('mongodb://localhost:27017/zoo')
         console.error('Error de Conexión');
         console.error(err);
     });
+
