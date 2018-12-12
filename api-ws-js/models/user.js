@@ -11,7 +11,7 @@ var UserSchema = Schema({
     password: String,
     image: String,
     role: String
-}, {
+    }, {
         versionKey: false
     });
 

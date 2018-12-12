@@ -11,16 +11,7 @@ var User = require('../models/user');
 //servicio jwt
 var jwt = require('../services/jwt');
 
-
-
 //acciones
-function pruebas(req, resp) {
-    resp.status(200).send({
-        message: 'Probando el controlador usuario',
-        user: req.user
-    });
-}
-
 function saveUser(req, resp) {
     //instanciar objecto usuario
     var user = new User();
@@ -168,7 +159,7 @@ function uploadImage(req, resp) {
     var file_name = 'No subido...';
 
     if (req.files) {
-        var file_path = req.files.imagen.path;
+        var file_path = req.files.image.path;
         var file_split = file_path.split('/');
         var file_name = file_split[2];
 
@@ -257,11 +248,9 @@ function getKeepers(req, resp) {
             }
         }
     });
-
 }
 
 module.exports = {
-    pruebas,
     saveUser,
     login,
     updateUser,
