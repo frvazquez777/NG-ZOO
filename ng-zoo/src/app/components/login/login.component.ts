@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(loginForm) {
-        console.log(this.user);
+        // console.log(this.user);
         //loging del usuario
         this._userService.signup(this.user).subscribe(
             response => {
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
                         //conseguir el token
                         this._userService.signup(this.user, 'true').subscribe(
                             response => {
-                                console.log(response);
+                                // console.log(response);
                                 if (response.token) {
                                     this.token = response.token;
                                     if (this.token.length <= 0) {

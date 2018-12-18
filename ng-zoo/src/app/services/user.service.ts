@@ -67,4 +67,5 @@ export class UserService {
 
         return this.http.put(this.url + '/update-user/' + user_to_update._id, params, { headers: headers });
     }
+
 }

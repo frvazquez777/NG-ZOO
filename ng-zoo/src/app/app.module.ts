@@ -14,6 +14,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { KeeperComponent } from './components/keeper/keeper.component';
 
+//componente de error
+import { ErrorComponent } from './components/error/error.component';
+
 //actualizacion de datos
 import { UserEditComponent } from './components/user-edit/user.edit.component';
 
@@ -27,6 +30,7 @@ import { AdminModule } from './admin/admin.module';
 
 //servicios en caso de sean generales para todos los componentes o/u controllers
 //import { UserService } from './services/user.service';
+import { UserGuard } from './services/user.guard';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,8 @@ import { AdminModule } from './admin/admin.module';
     AnimalsComponent,
     ContactComponent,
     KeeperComponent,
-    UserEditComponent
+    UserEditComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -51,8 +56,8 @@ import { AdminModule } from './admin/admin.module';
     HttpClientModule
   ],
   providers: [
-    appRoutingProviders
-   //, UserService
+    appRoutingProviders,
+    UserGuard
   ],
   bootstrap: [AppComponent]
 })

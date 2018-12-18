@@ -81,11 +81,16 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li>
-                  <a [routerLink]="['/mis-datos']" class="pointer">
-                    <span class="glyphicon glyphicon-cog"></span>
-                    Mis Datos
+                <li *ngIf="identity && identity.role == 'ROLE_ADMIN'">
+                  <a [routerLink]="['/admin-panel']" class="pointer">
+                    <span class="glyphicon glyphicon-tasks"></span>
+                      Administración
                   </a>
+                  <li>
+                      <a [routerLink]="['/mis-datos']" class="pointer">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        Mis Datos
+                      </a>
                 </li>
                 <li>
                   <a (click)="logout()" class="pointer">
