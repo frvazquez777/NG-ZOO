@@ -2,10 +2,12 @@
 body 
     background #fafafa
 
+.pointer
+    cursor pointer
+
 .navigation 
     .col-lg-12 
         margin-top 10px
-
 
 .jumbotron
     padding 40px
@@ -13,12 +15,32 @@ body
     box-shadow 2px 5px 1px #ccc
 
 .navbar-nav .active
-    border-bottom 3px solid orange
+    border-bottom 3px solid orange !important
+
+.image_for_edit
+    img 
+        width 100px
+
+.avatar
+    width 35px
+    height 35px
+    border-radius 50%
+    overflow hidden
+    margin-top 8px
+    margin-right -1px
+
+.avatar 
+    img 
+        width 70px
+        height 45px
+        margin auto
 
 .navbar-default 
     .navbar-nav 
         li 
             a
+                transition all 300ms 
+                border-bottom 3px solid transparent
                 &:hover
                     transition all 300ms 
                     border-bottom 3px solid orange 

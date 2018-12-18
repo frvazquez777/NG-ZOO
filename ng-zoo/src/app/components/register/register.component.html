@@ -1,0 +1,56 @@
+<div class="col-lg-6">
+
+    <h1>{{titulo}}</h1>
+
+    <div class="alert alert-success" *ngIf="status">
+        {{message}}
+        <a [routerLink]="['/login']">Ingresa aquí.</a>
+    </div>
+    <div class="alert alert-danger" *ngIf="error">
+        {{message}}
+    </div>
+
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-lg-10">
+
+        <br>
+        <p>
+            <span *ngIf="!name.valid && name.touched" class="alert alert-warning">
+                El nombre es obligatorio
+            </span>
+            <br>
+            <label for="name">Nombre</label>
+            <br>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required />
+        </p>
+        <p>
+            <span *ngIf="!lastname.valid && lastname.touched" class="alert alert-warning">
+                Los apellidos son obligatorio
+            </span>
+            <br>
+            <label for="lastname">Apellidos</label>
+            <br>
+            <input type="text" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname" class="form-control"
+                required />
+        </p>
+        <p>
+            <span *ngIf="!email.valid && email.touched" class="alert alert-warning">
+                El correo electrónico es obligatorio
+            </span>
+            <br>
+            <label for="email">Correo Electrónico</label>
+            <br>
+            <input type="text" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required />
+        </p>
+        <p>
+            <span *ngIf="!pawword.valid && pawword.touched" class="alert alert-warning">
+                Es necesario una contraseña
+            </span>
+            <br>
+            <label for="password">Contraseña</label>
+            <br>
+            <input type="password" name="password" #pawword="ngModel" [(ngModel)]="user.password" class="form-control"
+                required />
+        </p>
+        <input type="submit" value="{{titulo}}" class="btn btn-primary btn-block" [disabled]="!registerForm.form.valid">
+    </form>
+</div>

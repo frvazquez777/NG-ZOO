@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { fundido, rotacion } from '../animation';
+import { fundido } from '../animation';
 
 @Component({
     selector: 'home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.styl'],
-    animations: [rotacion]
+    animations: [fundido]
 })
 export class HomeComponent implements OnInit {
     public titulo: string;

@@ -1,0 +1,46 @@
+body 
+    position relative
+
+.mensaje_alert 
+    color red 
+
+.login
+    border 1px solid #e1e1e1 
+    border-radius 5px 
+    padding 14px 
+    width 300px
+    position absolute 
+    top 40%
+    left 50%
+    transform translate(-10%, -10%) 
+
+@media ( max-width: 400px ) 
+    .login 
+        width 90%
+        left 15%
+        padding 5px 
+
+@media ( min-width: 401px ) and ( max-width: 650px ) 
+    .login 
+        width 80%
+        left 20%
+        margin-top 15px 
+
+@media ( min-width: 651px ) and ( max-width: 1024px ) 
+    .login 
+        width 40%
+        left 35%
+        margin-top 15px 
+
+@media ( min-width: 1025px ) and ( max-width: 1200px ) 
+    .login 
+        width 50%
+        left 35%
+        margin-top 15px 
+
+@media ( min-width: 1201px ) //and ( max-width: 1740px ) 
+    .login 
+        width 40%
+        left 65%
+        margin-top 15px 
+

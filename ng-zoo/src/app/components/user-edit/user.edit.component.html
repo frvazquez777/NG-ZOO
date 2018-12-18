@@ -1,0 +1,56 @@
+<div class="col-lg-6">
+    <h1>{{titulo}}</h1>
+
+
+    <div class="alert alert-success" *ngIf="status">
+        {{message}}
+        <a [routerLink]="['/login']">Ingresa aquí.</a>
+    </div>
+    <div class="alert alert-danger" *ngIf="statusError">
+        {{message}}
+    </div>
+
+    <form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-10">
+
+        <br>
+        <p>
+            <span *ngIf="!name.valid && name.touched" class="alert alert-warning">
+                El nombre es obligatorio
+            </span>
+            <br>
+            <label for="name">Nombre</label>
+            <br>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required />
+        </p>
+        <p>
+            <span *ngIf="!lastname.valid && lastname.touched" class="alert alert-warning">
+                Los apellidos son obligatorio
+            </span>
+            <br>
+            <label for="lastname">Apellidos</label>
+            <br>
+            <input type="text" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname" class="form-control"
+                required />
+        </p>
+        <p>
+            <span *ngIf="!email.valid && email.touched" class="alert alert-warning">
+                El correo electrónico es obligatorio
+            </span>
+            <br>
+            <label for="email">Correo Electrónico</label>
+            <br>
+            <input type="text" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required />
+        </p>
+        <div class="image_for_edit" *ngIf="user.image && user.image != null">
+            <img src="{{ url + '/get-image-file/' +user.image }}">
+        </div>
+        <p>
+            <br>
+            <label for="image">Suber tu Avatar</label>
+            <br>
+            <input type="file" name="imagen" (change)="fileChangeEvent($event)" placeholder="Subir Imagen" />
+        </p>
+        <br>
+        <input type="submit" value="{{titulo}}" class="btn btn-primary btn-block" [disabled]="!userEditForm.form.valid">
+    </form>
+</div>

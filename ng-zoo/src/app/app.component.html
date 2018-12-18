@@ -2,45 +2,109 @@
 <div class="navigation col-lg-12">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header">
+      <!-- <div class="navbar-header">
         <a [routerLink]="['/home']" class="navbar-brand">{{ titulo }}</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li>
-          <a [routerLink]="['/home']" [routerLinkActive]="['active']">
-            <span class="glyphicon glyphicon-home"></span>
-            Inicio
-          </a>
-        </li>
-        <li>
-          <a [routerLink]="['/animales']" [routerLinkActive]="['active']">
-            <span class="glyphicon glyphicon-knight"></span>
-            Animales
-          </a>
-        </li>
-        <li>
-          <a [routerLink]="['/cuidadores']" [routerLinkActive]="['active']">
-            <span class="glyphicon glyphicon-user"></span>
-            Cuidadores
-          </a>
-        </li>
-        <li>
-          <a [routerLink]="['/tienda']" [routerLinkActive]="['active']">
-            <span class="glyphicon glyphicon-usd"></span>
-            Tienda
-          </a>
-        </li>
-        <li>
-          <a [routerLink]="['/contacto']" [routerLinkActive]="['active']">
-            <span class="glyphicon glyphicon-phone"></span>
-            Contacto
-          </a>
-        </li>
-      </ul>
+      </div> -->
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- El logotipo y el icono que despliega el menú se agrupan
+               para mostrarlos mejor en los dispositivos móviles -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Desplegar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="#">Logotipo</a> -->
+          <a [routerLink]="['/home']" class="navbar-brand">{{ titulo }}</a>
+
+        </div>
+
+        <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a [routerLink]="['/home']" [routerLinkActive]="['active']">
+                <span class="glyphicon glyphicon-home"></span>
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/animales']" [routerLinkActive]="['active']">
+                <span class="glyphicon glyphicon-knight"></span>
+                Animales
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/cuidadores']" [routerLinkActive]="['active']">
+                <span class="glyphicon glyphicon-user"></span>
+                Cuidadores
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/tienda']" [routerLinkActive]="['active']">
+                <span class="glyphicon glyphicon-usd"></span>
+                Tienda
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/contacto']" [routerLinkActive]="['active']">
+                <span class="glyphicon glyphicon-phone"></span>
+                Contacto
+              </a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
+            <li>
+              <a [routerLink]="['/registro']" [routerLinkActive]="['active']">
+                <span class="glyphicon glyphicon-user"></span>
+                Registro
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/login']" [routerLinkActive]="['active']">
+                <span class="glyphicon glyphicon-log-in"></span>
+                Login
+              </a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right" *ngIf="identity">
+            <li class="avatar">
+              <img src="{{ url + '/get-image-file/' +identity.image }}">
+            </li>
+            <li class="dropdown">
+              <a class="dropdown toggle" data-toggle="dropdown" href="#">
+                {{identity.name | uppercase}}
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a [routerLink]="['/mis-datos']" class="pointer">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    Mis Datos
+                  </a>
+                </li>
+                <li>
+                  <a (click)="logout()" class="pointer">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    Cerrar Sesión
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
   </nav>
 </div>
 
+<div *ngIf="loading">
+  <h1>Cargando cuenta...</h1>
+</div>
 <div class="col-lg-11">
   <router-outlet></router-outlet>
 </div>

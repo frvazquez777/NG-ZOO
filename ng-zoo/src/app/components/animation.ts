@@ -3,9 +3,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
 export const fundido =
     trigger('componentAnimation', [
-     /*   state('*', style({
-            opacity: 1
-        })),*/
+        /*   state('*', style({
+               opacity: 1
+           })),*/
         transition(':enter', [
             style({
                 opacity: 0,
@@ -17,33 +17,33 @@ export const fundido =
 
             }))
         ])
-      /*  transition(':leave', [
-            animate('2s', style({
-                opacity: 0
-            }))
-        ])*/
+        /*  transition(':leave', [
+              animate('2s', style({
+                  opacity: 0
+              }))
+          ])*/
     ]);
 
 
 export const rotacion =
-trigger('rotacion', [
- /*   state('*', style({
-        opacity: 1
-    })),*/
-    transition(':enter', [
-        style({
-            opacity: 0,
-            transform: 'rotate(150deg)'
-        }),
-        animate('1s', style({
-            opacity: 1,
-            transform: 'rotate(0deg)'
+    trigger('rotacion', [
+        /*   state('*', style({
+               opacity: 1
+           })),*/
+        transition(':enter', [
+            style({
+                opacity: 0,
+                transform: 'rotate(150deg)'
+            }),
+            animate('1s', style({
+                opacity: 1,
+                transform: 'rotate(0deg)'
 
-        }))
-    ])
-  /*  transition(':leave', [
-        animate('2s', style({
-            opacity: 0
-        }))
-    ])*/
-]);
+            }))
+        ])
+        /*  transition(':leave', [
+              animate('2s', style({
+                  opacity: 0u
+              }))
+          ])*/
+    ]);
