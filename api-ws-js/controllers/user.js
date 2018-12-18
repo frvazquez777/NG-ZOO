@@ -20,6 +20,7 @@ function saveUser(req, resp) {
     var params = req.body;
 
     console.log(params);
+    console.log(params.name);
 
     //asignar valores al objecto usuario
     if (params.password && params.name && params.lastname && params.email) {
@@ -62,7 +63,8 @@ function saveUser(req, resp) {
                     });
                 } else {
                     resp.status(200).send({
-                        message: 'El Usuario ya esta registrado'
+                        message: 'El Usuario ya esta registrado',
+                        user: null
                     });
                 }
             }
@@ -125,7 +127,8 @@ function updateUser(req, resp) {
 
     var userId = req.params.id;
     var update = req.body;
-
+    delete update.password;
+    
     console.log(req.params);
     if (userId != req.user.sub) {
         return resp.status(200).send({
