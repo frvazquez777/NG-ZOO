@@ -19,7 +19,11 @@ function saveAnimal(req, resp) {
         animal.name = params.name;
         animal.description = params.description;
         animal.year = params.year;
-        animal.image = null;
+        if(params.image){
+            animal.image = params.image;
+        } else {
+            animal.image = null;
+        }
         animal.user = req.user.sub;
 
         animal.save((err, animalStored) => {
@@ -121,9 +125,10 @@ function uploadImage(req, resp) {
         var file_path = req.files.image.path;
         var file_split = file_path.split('/');
         var file_name = file_split[2];
-
+        console.log(file_name);
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
+        console.log(file_ext);
 
         if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif') {
 
@@ -171,8 +176,9 @@ function uploadImage(req, resp) {
 
 function getImageFile(req, resp) {
 
-    var imageFile = req.params.imageFile;
+    var imageFile = req.params.id;
     var path_file = './upload/animals/' + imageFile;
+    console.log(path_file);
     fs.exists(path_file, function (exists) {
         if (exists) {
             resp.sendFile(path.resolve(path_file));
