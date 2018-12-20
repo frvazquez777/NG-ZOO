@@ -246,7 +246,7 @@ function getKeepers(req, resp) {
                 });
             } else {
                 resp.status(200).send({
-                    users
+                    keepers: users
                 });
             }
         }
