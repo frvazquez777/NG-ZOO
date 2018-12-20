@@ -27,6 +27,7 @@ export class AddComponent implements OnInit {
   public identity;
   public token;
   public filesToUpload;
+  public is_edit;
 
   constructor(
     private _route: ActivatedRoute,
