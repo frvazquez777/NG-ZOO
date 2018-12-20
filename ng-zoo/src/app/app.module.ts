@@ -13,6 +13,7 @@ import { AnimalsComponent } from './components/animals/animals.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { KeeperComponent } from './components/keeper/keeper.component';
+import { AnimalDetailComponent } from './components/animal-detail/animal.detail.component';
 
 //componente de error
 import { ErrorComponent } from './components/error/error.component';
@@ -41,6 +42,7 @@ import { UserGuard } from './services/user.guard';
     ParqueComponent,
     HomeComponent,
     AnimalsComponent,
+    AnimalDetailComponent,
     ContactComponent,
     KeeperComponent,
     UserEditComponent,

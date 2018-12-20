@@ -1,32 +1,61 @@
 <div class="col-lg-12">
-    <h3>{{titulo}}</h3>
-    <table class="table table-hover">
-        <thead class="thead-default">
-            <tr>
-                <th>Nombre</th>
-                <th>Año</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let n of numbers; let i = index">
-                <td>Oso Panda {{i + 1}}</td>
-                <td>2012</td>
-                <td>
-                    <button class="btn btn-sm btn-success">
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                        Ver
-                    </button>
-                    <button class="btn btn-sm btn-primary">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        Editar
-                    </button>
-                    <button class="btn btn-sm btn-danger">
-                        <span class="glyphicon glyphicon-trash"></span>
-                        Eliminar
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <h3>{{titulo}}</h3>
+
+  <div class="row">
+      <div class="col-lg-2">Buscar:</div>
+      <div class="col-lg-5">
+        <input type="text" [(ngModel)]="busqueda" >
+      </div>
+      <div class="col-lg 3 label label-default" *ngIf="busqueda">
+        Resultado <strong>{{busqueda | uppercase}}</strong>
+      </div>
+  </div>
+  <br>
+  <table class="table table-hover">
+    <thead class="thead-default">
+      <tr>
+        <th>Nombre</th>
+        <th>Año</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let animal of animals | search: busqueda">
+        <td>{{animal.name | uppercase}}</td>
+        <td>{{animal.year}}</td>
+        <td>
+          <a class="btn btn-sm btn-success" [routerLink]="['/animal', animal._id]">
+            <span class="glyphicon glyphicon-eye-open"></span>
+            Ver
+          </a>
+          <a class="btn btn-sm btn-primary" [routerLink]="['/admin-panel/editar', animal._id]">
+            <span class="glyphicon glyphicon-pencil"></span>
+            Editar
+          </a>
+          <a href="#myModal-{{animal._id}}" role="button" class="btn btn-sm btn-danger" data-toggle="modal">
+            <span class="glyphicon glyphicon-trash"></span>
+            Eliminar
+          </a>
+          <div id="myModal-{{animal._id}}" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Confirmación</h4>
+                </div>
+                <div class="modal-body">
+                  <p>¿Seguro que desea eliminar el registro del animal <strong>{{animal.name | uppercase}} </strong>?</p>
+                  <p class="text-warning"><small>Este cambio no es reversible.</small></p>
+                </div>
+                <div class="modal-footer">
+                  <a class="btn btn-default" data-dismiss="modal">SALIR</a>
+                  <a class="btn btn-danger" (click)="deleteAnimal(animal._id)">ELIMINAR</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

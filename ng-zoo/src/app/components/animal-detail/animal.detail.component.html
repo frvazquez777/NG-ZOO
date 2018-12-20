@@ -1,0 +1,16 @@
+<div class="col lg-10">
+  <div class="animal-box" *ngIf="animal">
+    <div id="animal-head-card" class="col-lg-4 pull-left" *ngIf="animal.image">
+      <img src="{{ url + '/get-image-animal/' + animal.image }}">
+    </div>
+    <div class="animal-data col-lg-7 pull-left">
+      <h2>{{animal.name}}</h2>
+
+      <p>{{animal.user.name + ' ' + animal.user.lastname}}</p>
+      <p>{{animal.description}}</p>
+      <p>{{animal.year}}</p>
+      <br>
+      <a [routerLink]="['/admin-panel']" class="btn btn-warning">Volver a Lista</a>
+    </div>
+  </div>
+</div>

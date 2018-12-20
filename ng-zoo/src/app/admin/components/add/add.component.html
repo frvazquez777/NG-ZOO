@@ -1,19 +1,51 @@
-<h3>{{titulo}}</h3>
+<div class="col-lg-10">
+  <hr>
+  <h3>{{titulo}}</h3>
+  <hr>
+  <div class="alert alert-success" *ngIf="status">
+      {{message}}
+      <a [routerLink]="['/login']">Ingresa aquí.</a>
+  </div>
+  <div class="alert alert-danger" *ngIf="error">
+      {{message}}
+  </div>
 
-<form>
-
+  <form #formAdd="ngForm" (ngSubmit)="onSubmit(formAdd)">
     <p>
-        <label for="nombre">Nombre</label>
-        <input type="text" class="form-control">
+      <span *ngIf="!name.valid && name.touched" class="alert alert-warning">
+        El nombre es obligatorio
+      </span>
+      <br>
+      <label for="name">Nombre</label>
+      <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="animal.name" required/>
     </p>
     <p>
-        <label for="descripcion">Descripcion</label>
-        <textarea class="form-control"></textarea>
+      <span *ngIf="!description.valid && description.touched" class="alert alert-warning" >
+        La descripcion es obligatorio
+      </span>
+      <br>
+      <label for="description">Descripcion</label>
+      <textarea class="form-control" name="description" #description="ngModel" [(ngModel)]="animal.description" required></textarea>
     </p>
     <p>
-        <label for="anyo">Año</label>
-        <input type="text" class="form-control">
+      <span *ngIf="!year.valid && year.touched" class="alert alert-warning">
+        El año es obligatorio
+      </span>
+      <br>
+      <label for="year">Año</label>
+      <input type="text" class="form-control" name="year" #year="ngModel" [(ngModel)]="animal.year" required/>
     </p>
-    <input type="submit" value="{{titulo}}" class="btn btn-success" />
+    <div *ngIf="is_edit && animal.image">
+      <div class="animal_image">
+          <img src="{{ url + '/get-image-animal/' + animal.image }}">
+        </div>
+    </div>
+    <p>
+      <label for="image">Subir la imagen</label>
+      <input type="file" placeholder="subir imagen" name="imagen"  (change)="fileChangeEvent($event)" />
+    </p>
+    <br>
+    <input type="submit" value="{{titulo}}" class="btn btn-success btn-block" [disabled]="!formAdd.form.valid"/>
 
-</form>
+  </form>
+</div>
