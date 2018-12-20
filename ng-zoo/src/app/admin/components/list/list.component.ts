@@ -5,6 +5,8 @@ import { Animal } from '../../../models/animal';
 import { AnimalService } from '../../../services/animal.service';
 import { UserService } from '../../../services/user.service';
 
+import { fadeLateral } from '../../animation';
+
 //declare var jquery: any;
 import * as $ from 'jquery';
 declare var $: any;
@@ -13,6 +15,7 @@ declare var $: any;
   selector: 'admin-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.styl'],
+  animations: [fadeLateral],
   providers: [AnimalService]
 })
 export class ListComponent implements OnInit {
@@ -21,7 +24,7 @@ export class ListComponent implements OnInit {
   public numbers: Array<any>;
   public animals: Animal[];
   public token: string;
-  public busqueda;
+  public busqueda: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -67,4 +70,5 @@ export class ListComponent implements OnInit {
       }
     );
   }
+
 }

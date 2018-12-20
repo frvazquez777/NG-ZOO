@@ -8,9 +8,12 @@ import { UploadService } from '../../../services/upload.service';
 
 import { GLOBAL } from '../../../services/global';
 
+import { fadeLateral } from '../../animation';
+
 @Component({
   selector: 'admin-add',
   templateUrl: './add.component.html',
+  animations: [fadeLateral],
   providers: [UserService, AnimalService, UploadService]
 })
 export class AddComponent implements OnInit {

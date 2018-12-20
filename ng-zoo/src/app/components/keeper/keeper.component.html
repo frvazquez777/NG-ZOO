@@ -1,3 +1,17 @@
 <div class="col-lg-12" [@componentAnimation]>
-    <h1>{{titulo}}</h1>
+  <h1>{{titulo}}</h1>
+
+  <div class="col-sm-6 col-md-4" *ngFor="let keeper of keepers">
+    <div class="thumbnail">
+      <div class="imagen-mask">
+        <img src="{{ url + '/get-image-file/' +keeper.image }}" *ngIf="keeper.image">
+        <img src="https://vignette.wikia.nocookie.net/gangstar/images/8/84/Sin_imagen_disponible.jpg/revision/latest?cb=20131009183932&path-prefix=es"
+          *ngIf="!keeper.image">
+      </div>
+      <div class="caption">
+        <h3>{{keeper.name + ' ' + keeper.lastname | uppercase}}</h3>
+        <p>{{keeper.email | lowercase}}</p>
+      </div>
+    </div>
+  </div>
 </div>

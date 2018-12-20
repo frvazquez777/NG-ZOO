@@ -68,4 +68,9 @@ export class UserService {
         return this.http.put(this.url + '/update-user/' + user_to_update._id, params, { headers: headers });
     }
 
+    getKeeper(): Observable<any> {
+      let headers = new HttpHeaders().set('Content-Type', 'application/json');
+      return this.http.get(this.url + '/keepers', { headers: headers });
+    }
+
 }
